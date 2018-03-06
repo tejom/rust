@@ -645,8 +645,6 @@ define_dep_nodes!( <'tcx>
 
     [] InstanceDefSizeEstimate { instance_def: InstanceDef<'tcx> },
 
-    [] GetSymbolExportLevel(DefId),
-
     [input] Features,
 
     [] ProgramClausesFor(DefId),
