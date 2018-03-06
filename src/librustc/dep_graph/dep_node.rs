@@ -650,6 +650,9 @@ define_dep_nodes!( <'tcx>
     [input] Features,
 
     [] ProgramClausesFor(DefId),
+
+    [] UpstreamMonomorphizations(CrateNum),
+    [] UpstreamMonomorphizationsFor(DefId),
 );
 
 trait DepNodeParams<'a, 'gcx: 'tcx + 'a, 'tcx: 'a> : fmt::Debug {

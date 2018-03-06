@@ -1290,6 +1290,8 @@ options! {DebuggingOptions, DebuggingSetter, basic_debugging_options,
           "format compiler diagnostics in a way that's better suitable for UI testing"),
     embed_bitcode: bool = (false, parse_bool, [TRACKED],
           "embed LLVM bitcode in object files"),
+    share_generics: Option<bool> = (None, parse_opt_bool, [TRACKED],
+          "make the current crate share its generic instantiations"),
 }
 
 pub fn default_lib_output() -> CrateType {
