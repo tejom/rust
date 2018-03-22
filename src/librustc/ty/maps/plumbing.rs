@@ -854,6 +854,9 @@ pub fn force_from_dep_node<'a, 'gcx, 'lcx>(tcx: TyCtxt<'a, 'gcx, 'lcx>,
         DepKind::ImplParent => { force!(impl_parent, def_id!()); }
         DepKind::TraitOfItem => { force!(trait_of_item, def_id!()); }
         DepKind::IsReachableNonGeneric => { force!(is_reachable_non_generic, def_id!()); }
+        DepKind::IsUnreachableLocalDefinition => {
+            force!(is_unreachable_local_definition, def_id!());
+        }
         DepKind::IsMirAvailable => { force!(is_mir_available, def_id!()); }
         DepKind::ItemAttrs => { force!(item_attrs, def_id!()); }
         DepKind::TransFnAttrs => { force!(trans_fn_attrs, def_id!()); }
@@ -933,10 +936,16 @@ pub fn force_from_dep_node<'a, 'gcx, 'lcx>(tcx: TyCtxt<'a, 'gcx, 'lcx>,
 
         DepKind::TargetFeaturesWhitelist => { force!(target_features_whitelist, LOCAL_CRATE); }
 
-        DepKind::GetSymbolExportLevel => { force!(symbol_export_level, def_id!()); }
         DepKind::Features => { force!(features_query, LOCAL_CRATE); }
 
         DepKind::ProgramClausesFor => { force!(program_clauses_for, def_id!()); }
+
+        DepKind::UpstreamMonomorphizations => {
+            force!(upstream_monomorphizations, krate!());
+        }
+        DepKind::UpstreamMonomorphizationsFor => {
+            force!(upstream_monomorphizations_for, def_id!());
+        }
     }
 
     true
